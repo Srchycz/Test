@@ -16,14 +16,13 @@
 
 注：仅提供数据生成和对拍检查，无标程
 
-请先将check.cpp中第18行取消注释，并注释掉第17行
+请先将check.cpp中第18行取消注释，并注释掉第17行 同时把第20行的字符串改为fc out1.txt out2.txt
 
 你需要在同目录下放入两个jar，分别命名为mine.jar 和 std.jar
 
 将random.cpp中主函数部分的mode改为Valid，m=random(3000),然后单独运行一遍random.cpp(为了更新random.exe)
 
 随后直接运行check.cpp即可对拍
-
 
 ## 注
 
