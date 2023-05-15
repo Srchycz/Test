@@ -11,6 +11,7 @@ using namespace std;
 int init_plus(int);
 void generate_plus(int, int);
 void targetedTest(int, int);
+void Neg_targetedTest(int, int, int);
 inline int random(int n){
     if (n <= 0) {
         return rand() & 0xff;
@@ -152,9 +153,9 @@ int main(){
     srand((unsigned int)time(0));
     // printf("%s\n",randomString(6).get());
     freopen("in.txt","w",stdout);
-    int mode = Targeted;//Random or Valid or Targeted
-    int m=random(300);
-    int n=random(1000);
+    int mode = Valid;//Random or Valid or Targeted
+    int m=random(400);
+    int n=random(300);
     switch (mode) {
         case Random: {
             init(n);
@@ -166,7 +167,8 @@ int main(){
             break;
         }
         case Targeted: {
-            targetedTest(n, m);
+            // targetedTest(n, m);
+            Neg_targetedTest(n, m, 100);
             break;
         }
         default:{
@@ -304,7 +306,7 @@ void targetedTest(int n,int m) {
             x=random(n);
             y=random(n);
         } while (x==y);
-        printf("ar %d %d %d\n", x, y, random(500));
+        printf("ar %d %d %d\n", x, y, random(100));
     }
     for (int i = 1; i <= m; ++ i) {
         int x, y;
@@ -312,8 +314,30 @@ void targetedTest(int n,int m) {
             x=random(n);
             y=random(n);
         } while (x==y);
-        printf("ar %d %d %d\n", x, y, random(500));
+        printf("ar %d %d %d\n", x, y, random(100));
         printf("qlm %d\n", random(n));
+    }
+}
+void Neg_targetedTest(int n,int m, int k) {
+    if (n < 3) n = 3;
+    for (int i = 1; i <= n; ++ i)
+        printf("ap %d p%d %d\n",i - k, i, random(100));
+    for (int i = 1; i <= n; ++ i) {
+        int x, y;
+        do {
+            x=random(n);
+            y=random(n);
+        } while (x==y);
+        printf("ar %d %d %d\n", x - k, y - k, random(100));
+    }
+    for (int i = 1; i <= m; ++ i) {
+        int x, y;
+        do {
+            x=random(n);
+            y=random(n);
+        } while (x==y);
+        printf("ar %d %d %d\n", x - k, y - k, random(100));
+        printf("qlm %d\n", random(n) - k);
     }
 }
 /*
